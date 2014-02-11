@@ -74,14 +74,14 @@ else
 
     # Cross OS gui vim.
     alias mvim='gvim'
+
+    # mimic pbcopy from OSX.
+    alias pbcopy='xsel --clipboard --input'
+    alias pbpaste='xsel --clipboard --output'
 fi
 
 # todo
 alias todo='todo -@ -+ -t'
-
-# mimic pbcopy from OSX.
-alias pbcopy='xsel --clipboard --input'
-alias pbpaste='xsel --clipboard --output'
 
 # git-extras
 alias gitterm='git repl'
