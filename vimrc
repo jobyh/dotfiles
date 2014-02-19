@@ -1,123 +1,181 @@
-" Pathogen
+"   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"   __ _  ____  _  __(_)_ _  ________
+"  /  ' \/ __/ | |/ / /  ' \/ __/ __/
+" /_/_/_/_/    |___/_/_/_/_/_/  \__/
+"
+" ~~~~~~~~~~~~ /></ ~~~~~~~~~~~~~~
+"
+" Joby Harding's .vimrc 2013
+" https://github.com/jobyh/mr_vimrc
+"
+" Any workstation-specific Vim config
+" I tend to put into a local .gvimrc
+" As it's generally the case that the
+" terminal settings also control font
+" size of non-gui Vim.
+"
+" The plugins section comes first so
+" that it's possible to override any
+" settings automatically set by them
+" later in the config file.
+"
+
+" Plugins
+" =======
+
+" Pathogen ~ https://github.com/tpope/vim-pathogen
+" --------
+" This call needs to be first (package manager).
 call pathogen#infect()
-syntax on
-filetype plugin indent on
 
-" Colourscheme
-syntax enable
+" Generate helptags.
+call pathogen#helptags()
+
+" Tagbar ~ https://github.com/majutsushi/tagbar
+" ------
+" Toggle display with F8.
+nmap <F8> :TagbarToggle<CR>
+" Sort tags by order in file (default is alphabetical).
+let g:tagbar_sort = 0
+
+" Software Capslock ~ https://github.com/tpope/vim-capslock
+" -----------------
+imap <C-L> <Plug>CapsLockToggle
+
+" Colorscheme
+" ===========
+" This section needs to be after Pathogen call.
 set background=dark
-"set background=dark
-" let g:solarized_visibility = "high"
-" let g:solarized_contrast = "high"
-" show whitespace at end of lines
-match error /\s\+$/
-hi error guibg=red
-hi error guifg=black
 colorscheme solarized
-"colorscheme gummybears
 
-"----------------------------------------------------------
-" SETTINGS
-"----------------------------------------------------------
-set autoindent
 
-syntax on
-
-set tabstop=4
-set shiftwidth=4
-set expandtab
+" General settings
+" ================
+" Show line numbers.
 set number
+" Display cursor line.
 set cursorline
+" Unset enter Ex mode.
+nnoremap Q <nop>
+" File type detection.
+filetype on
 
-"code folding
-set foldmethod=indent
-set foldlevel=99
-"set nofoldenable
 
-"search settings
+" GUI Settings
+" ============
+" Tend to use my .gvimrc for
+" localized settings so any
+" global GUI settings live here.
+
+" Don't show the toolbar.
+if has('gui_running')
+    " Remove menu bar.
+    set guioptions -=m
+    " Remove toolbar.
+    set guioptions -=T
+    " Remove right scrollbar.
+    set guioptions -=r
+    " Remove right scrollbar in splits.
+    set guioptions -=R
+    " Remove left scrollbar.
+    set guioptions -=l
+    " Remove left scrollbar in splits.
+    set guioptions -=L
+endif
+
+
+" Tab & indent settings
+" =====================
+" Set automatic indentation.
+set smartindent
+" set cindent
+
+" ~ Hard tabs ~
+" Size of <Tab> in spaces.
+set tabstop=2
+" Size of auto indent in spaces.
+set shiftwidth=2
+set expandtab
+
+
+" Text search
+" ===========
+" Highlight search matches.
 set hlsearch
+" Find matches as you type.
 set incsearch
 
-" show whitespace at end of lines
+
+" Color and highlighting
+" ======================
+" Enable syntax highlighting.
+syntax enable
+" Show trailing whitespace.
 match error /\s\+$/
+" Error background red.
+hi error ctermbg=red
 hi error guibg=red
+" Error text black.
+hi error ctermfg=black
 hi error guifg=black
 
-"auto comment newlines after comment start in INSERT mode
-:set formatoptions+=r
 
-" highlight bg color of current line"
-hi cursorline guibg=#333333
-
-"----------------------------------------------------------
-" KEY REMAPPING
-"----------------------------------------------------------
-"
-
-"auto-insert closing brace from http://vim.wikia.com/wiki/Automatically_append_closing_characters
-"
-inoremap {  {}<Left>
-inoremap {<CR>  {<CR>}<Esc>O
-inoremap {{  {
-inoremap {}  {}
-
-inoremap (  ()<Left>
-inoremap (<CR>  (<CR>)<Esc>O
-inoremap ((  (
-inoremap ()  ()
-
-nmap <Space> z
-nmap <Space><Space> zz
-
-" Insert file from snippets
-nnoremap :snpt :r ~/snpt/
-" Remove trailing whitespace shortcut (includes user confirm)
-nnoremap :rmws :%s/\s\+$//g<CR>
+" Key mappings
+" ============
+" Center on current line.
+nnoremap <Space><Space> zz
+" Current line to top.
+nnoremap <Space>t zt
+" Current line to bottom.
+nnoremap <Space>b zb
+" Remove trailing whitespace.
+nnoremap <Leader>rmws :%s/\s\+$//g<CR>
+" Remove ^M line end additional characters.
+nnoremap <Leader>rmle :%s/\+$//g<CR>
+" Open .vimrc in a split ~ http://learnvimscriptthehardway.stevelosh.com/chapters/07.html
+nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
+" Open .gvimrc in a split.
+nnoremap <Leader>eg :vsplit $MYGVIMRC<CR>
+" Source .vimrc ~ http://learnvimscriptthehardway.stevelosh.com/chapters/07.html
+nnoremap <Leader>sv :source $MYVIMRC<CR>
+" Source .gvimrc
+nnoremap <Leader>sg :source $MYGVIMRC<CR>
+" Change split.
+nnoremap <Leader>w <C-W>
 
 
-"SYNTAX BASED SETTINGS ----------------------------------------------
+" Syntax specific mappings
+" ========================
+" Insert semicolon at end of line.
+autocmd FileType php,javascript,scss,css nnoremap ;; A;<Esc>
+" Insert comma at end of line.
+autocmd FileType php,javascript nnoremap ,, A,<Esc>
+" Insert colon at end of line.
+autocmd FileType python nnoremap :: A:<Esc>
+" Generic python indent settings.
+autocmd FileType python set tabstop=4
+autocmd FileType python set shiftwidth=4
 
-" Show indent levels using python indent plugin.
-" autocmd FileType python execute <Leader>ig
 
-" WORD PROCESSING
-"----------------------------------------------------------
-" some settings from <http://tech.geoff.me/2008/05/vim-word-processor.html> to make vim better as a word processor
-autocmd BufRead *\.txt setlocal formatoptions=lr
-"wrap lines by word (character default)
-autocmd BufRead *\.txt setlocal lbr
-"map j and k keys so that they move up and down inside wrapped lines
-autocmd BufRead *\.txt map j gj
-autocmd BufRead *\.txt map k gk
-autocmd BufRead *\.txt setlocal smartindent
+" Scrolling
+" =========
+" Number of lines from vertical edge to start scrolling.
+set scrolloff=7
 
-" Highlight trailing whitespace.
-autocmd ColorScheme * highlight RedundantSpaces ctermbg=red
-"autocmd BufRead *\.txt setlocal spell spelllang=en_GB
+" Buffer settings
+" ===============
+" Map left and right arrows to previous and next buffer.
+noremap <left> :bp<CR>
+noremap <right> :bn<CR>
 
-"----------------------------------------------------------
+" Format options
+" ==============
+" Auto insert comment leader options.
+set formatoptions+=r,o,c
 
-" Tagbar plugin
-nmap <F8> :TagbarToggle<CR>
-
-" Indent guides plugin
-let g:indent_guides_start_level=2
-let g:indent_guides_guide_size=1
-
-" PHP documenter script bound to Control-P
-autocmd FileType php inoremap <C-p> <ESC>:call PhpDocSingle()<CR>i
-autocmd FileType php nnoremap <C-p> :call PhpDocSingle()<CR>
-autocmd FileType php vnoremap <C-p> :call PhpDocRange()<CR>
-
-" Unset 'enter Ex mode' command
-nnoremap Q <nop>
-
-" Ctrl-P plugin binding
-let g:ctrlp_map = '<Leader>o'
-let g:ctrlp_cmd = 'CtrlP'
-
-" Processing Vim plugin settings.
-" Offline docs.
-let processing_doc_path="/Applications/Processing.app/Contents/Resources/Java/modes/java/reference"
-filetype plugin on
-let g:use_processing_java=1
+" Filetype-specific settings
+" ==========================
+" Conf.
+autocmd BufRead,BufNewFile *.conf setfiletype dosini
+" Markdown.
+autocmd BufRead,BufNewFile *.md set syntax=markdown
