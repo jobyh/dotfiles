@@ -104,6 +104,11 @@ alias veewee='bundle exec veewee'
 # open my 'standard' dumpfile.
 alias mrlog='vim ~/.mrloggingtons'
 
+# composer
+alias com='composer'
+
+# drush
+alias d='drush'
 
 # System variables
 # ================
