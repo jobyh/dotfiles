@@ -147,11 +147,11 @@ nnoremap <Leader>w <C-W>
 " Syntax specific mappings
 " ========================
 " Insert semicolon at end of line.
-autocmd FileType php,javascript,scss,css nnoremap ;; A;<Esc>
+autocmd FileType php,javascript,scss,css nnoremap ;; mxA;<Esc>`x
 " Insert comma at end of line.
-autocmd FileType php,javascript nnoremap ,, A,<Esc>
+autocmd FileType php,javascript nnoremap ,, mxA,<Esc>`x
 " Insert colon at end of line.
-autocmd FileType python nnoremap :: A:<Esc>
+autocmd FileType python nnoremap :: mxA:<Esc>`x
 " Generic python indent settings.
 autocmd FileType python set tabstop=4
 autocmd FileType python set shiftwidth=4
