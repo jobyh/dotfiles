@@ -20,3 +20,9 @@ fi
 if [ -d $HOME/.drush ]; then
   export PATH="$HOME/.drush:$PATH"
 fi
+
+# Linuxbrew.
+if [ -d $HOME/.linuxbrew ]; then
+    export PATH="$HOME/.linuxbrew/bin:$PATH"
+    export LD_LIBRARY_PATH="$HOME/.linuxbrew/lib:$LD_LIBRARY_PATH"
+fi
