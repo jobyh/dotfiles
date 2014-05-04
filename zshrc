@@ -163,10 +163,6 @@ if [[ -d /private ]]; then
 
     # OSX
     # ===
-
-    # Homebrew Python bin.
-    PATH=$PATH:/usr/local/share/python
-
     # Homebrew
     PATH=$PATH:/usr/local/Cellar/php54/5.4.6/bin                                        # Add php5.4.6 bin to path
     PATH=/usr/local/bin:$PATH                                                           # Local bin (Homebrew)
