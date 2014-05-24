@@ -234,3 +234,8 @@ set formatoptions+=r,o,c
 autocmd BufRead,BufNewFile *.conf setfiletype dosini
 " Markdown.
 autocmd BufRead,BufNewFile *.md set syntax=markdown
+
+" Misc settings
+" =============
+" Make backspace work 'normally'
+set backspace=indent,eol,start
