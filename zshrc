@@ -1,4 +1,5 @@
-# Path to your oh-my-zsh configuration.
+#
+#Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
@@ -6,9 +7,9 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="robbyrussell"
-#SOLARIZED_THEME="light"
-#ZSH_THEME="blinks"
-ZSH_THEME="jobyh"
+SOLARIZED_THEME="dark"
+ZSH_THEME="blinks"
+#ZSH_THEME="jobyh"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
