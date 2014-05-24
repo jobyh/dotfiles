@@ -49,8 +49,8 @@ imap <C-L> <Plug>CapsLockToggle
 " git@github.com:SirVer/ultisnips.git
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpForwardTrigger="<c-l>"
+let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 
 " If you want :UltiSnipsEdit to split your window.
 "let g:UltiSnipsEditSplit="vertical"
@@ -61,14 +61,19 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " python powerline_setup()
 " python del powerline_setup
 
+" CtrlP
+" -----
+" git@github.com:kien/ctrlp.vim.git
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
 " Colorscheme
 " ===========
 " This section needs to be after Pathogen call.
-" set background=light
-" colorscheme solarized
+set background=dark
+colorscheme solarized
 " colorscheme gummybears
 " colorscheme distinguished
-colorscheme getafe
+" colorscheme getafe
 
 
 " General settings
@@ -164,6 +169,26 @@ nnoremap <Leader>sv :source $MYVIMRC<CR>
 nnoremap <Leader>sg :source $MYGVIMRC<CR>
 " Change split.
 nnoremap <Leader>w <C-W>
+
+" Statusline
+" ==========
+" Based on http://got-ravings.blogspot.co.uk/2008/08/vim-pr0n-making-statuslines-that-own.html
+set statusline=%t                                                        "tail of the filename
+set statusline+=[%{strlen(&fenc)?&fenc:'none'},                          "file encoding
+set statusline+=%{&ff}]                                                  "file format
+set statusline+=%h                                                       "help file flag
+set statusline+=%m                                                       "modified flag
+set statusline+=%r                                                       "read only flag
+set statusline+=%y                                                       "filetype
+set statusline+=%{fugitive#statusline()}                                  "fugitive plugin"
+set statusline+=%{exists('*CapsLockStatusline')?CapsLockStatusline():''} "vim-capslock plugin
+set statusline+=%=                                                        "left/right separator
+set statusline+=%c,                                                       "cursor column
+set statusline+=%l/%L                                                     "cursor line/total lines
+set statusline+=\ %P                                                      "percent through file"
+
+" Always show statusline.
+:set laststatus=2
 
 
 " Syntax specific mappings
