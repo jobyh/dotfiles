@@ -81,7 +81,7 @@ colorscheme solarized
 " Show line numbers.
 set number
 " Display cursor line.
-" set cursorline
+set cursorline
 " Unset enter Ex mode.
 nnoremap Q <nop>
 " File type detection.
