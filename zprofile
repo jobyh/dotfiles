@@ -25,18 +25,30 @@ if which rbenv > /dev/null; then
   eval "$(rbenv init -)"
 fi
 
-# Drush.
+# drush
 if [ -d $HOME/.drush ]; then
   export PATH="$HOME/.drush:$PATH"
 fi
 
-# Moosh.
+# moosh
 if [ -d $HOME/.moosh ]; then
   export PATH="$HOME/.moosh:$PATH"
+  alias moosh='moosh.php'
 fi
 
-# Linuxbrew.
+# linuxbrew
 if [ -d $HOME/.linuxbrew ]; then
     export PATH="$HOME/.linuxbrew/bin:$PATH"
     export LD_LIBRARY_PATH="$HOME/.linuxbrew/lib:$LD_LIBRARY_PATH"
+fi
+
+# phpenv
+if [ -d $HOME/.phpenv ]; then
+    export PATH="$HOME/.phpenv/bin:$PATH"
+    eval "$(phpenv init -)"
+fi
+
+# phpsh
+if [ -d $HOME/.phpsh ]; then
+    export PATH="$HOME/.phpsh:$PATH"
 fi
