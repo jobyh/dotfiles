@@ -47,8 +47,3 @@ if [ -d $HOME/.phpenv ]; then
     export PATH="$HOME/.phpenv/bin:$PATH"
     eval "$(phpenv init -)"
 fi
-
-# phpsh
-if [ -d $HOME/.phpsh ]; then
-    export PATH="$HOME/.phpsh:$PATH"
-fi
