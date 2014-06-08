@@ -15,6 +15,7 @@ fi
 # composer
 if [ -d $HOME/.composer ]; then
   export PATH="$HOME/.composer:$PATH"
+  alias composer='composer.phar'
 fi
 
 if [ -d $HOME/.composer/vendor/bin ]; then
