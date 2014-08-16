@@ -26,6 +26,9 @@ endif
 " This call needs to be first (package manager).
 call pathogen#infect()
 
+" Drupal vim plugin.
+call pathogen#infect('~/.drush/vimrc/bundle')
+
 " Generate helptags.
 call pathogen#helptags()
 
@@ -119,9 +122,9 @@ set smartindent
 
 " ~ Hard tabs ~
 " Size of <Tab> in spaces.
-set tabstop=2
+set tabstop=4
 " Size of auto indent in spaces.
-set shiftwidth=2
+set shiftwidth=4
 set expandtab
 
 
