@@ -48,3 +48,8 @@ if [ -d $HOME/.phpenv ]; then
     export PATH="$HOME/.phpenv/bin:$PATH"
     eval "$(phpenv init -)"
 fi
+
+# pear
+if [ -d $HOME/pear ]; then
+    export PATH="$HOME/pear/bin:$PATH"
+fi
