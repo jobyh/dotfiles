@@ -113,6 +113,9 @@ alias com='composer'
 # drush
 alias dru='drush'
 
+# git (my common typo)
+alias it='git'
+
 # System variables
 # ================
 export EDITOR=vim
