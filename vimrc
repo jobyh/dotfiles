@@ -41,7 +41,7 @@ let g:tagbar_sort = 0
 
 " Syntastic
 " ---------
-"let g:syntastic_phpcs_conf=" --standard=DrupalCodingStandard --extensions=php,module,inc,install,test,profile,theme"
+let g:syntastic_php_phpcs_args="--standard=Drupal --extensions=php,module,inc,install,test,profile,theme"
 
 " Software Capslock ~ https://github.com/tpope/vim-capslock
 " -----------------
@@ -122,9 +122,9 @@ set smartindent
 
 " ~ Hard tabs ~
 " Size of <Tab> in spaces.
-set tabstop=4
+set tabstop=2
 " Size of auto indent in spaces.
-set shiftwidth=4
+set shiftwidth=2
 set expandtab
 
 
@@ -237,6 +237,8 @@ set formatoptions+=r,o,c
 autocmd BufRead,BufNewFile *.conf setfiletype dosini
 " Markdown.
 autocmd BufRead,BufNewFile *.md set syntax=markdown
+" Drupal
+autocmd BufRead,BufNewFile *.module,*.inc,*.install,*.test,*.profile,*.theme set syntax=php
 
 " Misc settings
 " =============
