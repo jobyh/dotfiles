@@ -5,8 +5,7 @@
 "
 " ~~~~~~~~~~~~ /></ ~~~~~~~~~~~~~~
 "
-" Joby Harding's .vimrc 2014
-" https://github.com/jobyh/mr_vimrc
+" Joby Harding's .vimrc 2018
 "
 " The plugins section comes first so
 " that it's possible to override any
@@ -25,9 +24,6 @@ endif
 " --------
 " This call needs to be first (package manager).
 call pathogen#infect()
-
-" Drupal vim plugin.
-call pathogen#infect('~/.drush/vimrc/bundle')
 
 " Generate helptags.
 call pathogen#helptags()
@@ -72,11 +68,9 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 " Colorscheme
 " ===========
 " This section needs to be after Pathogen call.
-set background=dark
-colorscheme solarized
-" colorscheme gummybears
-" colorscheme distinguished
-" colorscheme getafe
+let base16colorspace=256
+colorscheme base16-dracula
+"set background=dark
 
 
 " General settings
@@ -104,13 +98,17 @@ if has('gui_running')
     " Remove toolbar.
     set guioptions -=T
     " Remove right scrollbar.
-    set guioptions -=r
+    " set guioptions -=r
     " Remove right scrollbar in splits.
-    set guioptions -=R
+    " set guioptions -=R
     " Remove left scrollbar.
     set guioptions -=l
     " Remove left scrollbar in splits.
     set guioptions -=L
+    "set guifont=Menlo:h14
+    " Prevent error bell
+    autocmd GUIEnter * set vb t_vb=
+    set guifont=Monospace\ 16
 endif
 
 
@@ -122,9 +120,9 @@ set smartindent
 
 " ~ Hard tabs ~
 " Size of <Tab> in spaces.
-set tabstop=2
+set tabstop=4
 " Size of auto indent in spaces.
-set shiftwidth=2
+set shiftwidth=4
 set expandtab
 
 
@@ -244,3 +242,8 @@ autocmd BufRead,BufNewFile *.module,*.inc,*.install,*.test,*.profile,*.theme set
 " =============
 " Make backspace work 'normally'
 set backspace=indent,eol,start
+
+" Syntastic
+" =========
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exec = '/usr/local/bin/eslint'

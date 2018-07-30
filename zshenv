@@ -1,4 +1,4 @@
-# Pyenv.
-export PYENV_ROOT="$HOME/.pyenv"
-PATH="$PYENV_ROOT/bin:$PATH"
-PATH="$PATH:$HOME/.drush"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+  #eval "$(pyenv virtualenv-init -)"
+fi

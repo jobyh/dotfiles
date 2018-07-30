@@ -6,11 +6,13 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME="robbyrussell"
-SOLARIZED_THEME="dark"
-ZSH_THEME="blinks"
+#ZSH_THEME="jobyharding"
+#SOLARIZED_THEME="light"
+#ZSH_THEME="blinks"
 #ZSH_THEME="jobyh"
-
+#ZSH_THEME="robbyrussell"
+ZSH_THEME="screencast"
+#ZSH_THEME="jobyh"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -101,14 +103,14 @@ alias t='tree -Ca -L 2 -I \.git'
 alias tt='tree -Ca -L 3 -I \.git'
 alias ttt='tree -Ca -L 4 -I \.git'
 
+# twitter cli
+alias tw='t'
+
 # veewee
 alias veewee='bundle exec veewee'
 
 # open my 'standard' dumpfile.
 alias mrlog='vim ~/.mrloggingtons'
-
-# composer
-alias com='composer'
 
 # drush
 alias dru='drush'
@@ -136,29 +138,6 @@ bindkey "^R" history-incremental-search-backward                                
 
 # Functions
 # =========
-
-# Shortcut for editing common dotfiles.
-dot() {
-    # No arguments.
-    if [ $# -eq 0 ]; then
-        echo 'dot: specify file: z .zshrc, v .vimrc, g | m .gvimrc'
-        return
-    fi
-
-    # Handle different args.
-    case $1 in
-        g | m)
-            vim ~/.gvimrc
-        ;;;
-        v)
-            vim ~/.vimrc
-        ;;;
-        z)
-            vim ~/.zshrc
-        ;;;
-    esac
-}
-
 
 # Search path additions
 # =====================
@@ -196,3 +175,32 @@ else
     # Ubuntu apt installed autojump.
     [[ -f /usr/share/autojump/autojump.sh ]] && . /usr/share/autojump/autojump.sh
 fi
+
+PERL_MB_OPT="--install_base \"/home/jobyh/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/jobyh/perl5"; export PERL_MM_OPT;
+
+# Base16 Shell
+#BASE16_SHELL="$HOME/.config/base16-shell/base16-paraiso.dark.sh"
+#BASE16_SHELL="$HOME/.config/base16-shell/base16-flat.dark.sh"
+#BASE16_SHELL="$HOME/.config/base16-shell/base16-grayscale.light.sh"
+#BASE16_SHELL="$HOME/.config/base16-shell/base16-eighties.dark.sh"
+#BASE16_SHELL="$HOME/.config/base16-shell/bright.dark.sh"
+#[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+#base16_flat
+
+# MacVim installed via homebrew
+#PATH=$PATH:/usr/local/Cellar/macvim/7.4-84/bin
+
+# Composer
+export PATH=$PATH:~/.composer/vendor/bin
+
+# Set colourscheme
+#base16_mexico-light
+#base16_darktooth
+#base16_flat
+#base16_harmonic-dark
+
+# Nodenv
+eval "$(nodenv init -)"
